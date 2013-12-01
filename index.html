@@ -151,7 +151,7 @@
 	</div></section>
 
 	<section class="slide"><div>
-		<h2>Хелперы</h2>
+		<h2>Helpers</h2>
 		<p>Блочные: <code>{{#each}}</code>, <code>{{#if}}</code> и т.п.</p>
 		<pre class="next">
 			<code><mark>{{#is basename &quot;index&quot;}}</mark></code>
@@ -163,7 +163,7 @@
 	</div></section>
 
 	<section class="slide"><div>
-		<h2>Хелперы</h2>
+		<h2>Helpers</h2>
 		<p>Функции: <code>{{default}}</code>, <code>{{formatDate}}</code> и т.п.</p>
 		<pre class="next">
 			<code>&lt;title&gt;<mark>{{default title basename}}</mark>&lt;/title&gt;</code>
@@ -172,7 +172,7 @@
 	</div></section>
 
 	<section class="slide"><div>
-		<h2>Хелперы</h2>
+		<h2>Helpers</h2>
 		<pre>
 			<code>module.exports.register =</code>
 			<code>&nbsp;function (Handlebars, options) {</code>
@@ -184,9 +184,27 @@
 	</div></section>
 
 	<section class="slide"><div>
-		<h2>Паршалы</h2>
-		<p>Повторно используемые фрагменты страниц.</p>
-		<p class="next">Могут вызываться в разных контекстах.</p>
+		<h2>Partials</h2>
+		<p>Фрагменты страниц можно вынести в отдельные файлы.<br>
+			<img src="images/partial_placeholder.png" alt=""
+				style="margin-top: 0.5em;" class="next">
+		</p>	
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Partials</h2>
+		<div class="small-gap">
+			<p><code>{{> sidebar}}</code><br>
+				вызов в контексте страницы</p>
+		</div>
+		<div class="small-gap">
+			<p><code>{{> sidebar context1}}</code><br>
+				вызов в контексте объекта <strong>context1</strong></p>
+		</div>
+		<div class="small-gap">
+			<p><code>{{#context2}}&nbsp;{{> sidebar}}&nbsp;{{/context2}}</code><br>
+				вызов в контексте объекта <strong>context2</strong></p>
+		</div>
 	</div></section>
 
 	<section class="slide"><div>
