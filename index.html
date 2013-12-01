@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Прототип сайта: разработка и развёртывание</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<style type="text/css">
+		.shout.talk-topic h2 {
+			font-size: 120px;
+		}
+		.slide .small-gap p {
+			margin-bottom: 25px;
+		}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Прототип сайта: разработка и развёртывание</h1>
+		<p><a href="http://noteskeeper.ru/about/">Владимир Кузнецов</a>, Engine6</p>
+	</header>
+
+	<section class="slide shout talk-topic"><div>
+		<h2>Прототип сайта:<br>разработка и развёртывание</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Одно из правил в нашей компании</h2>
+		<p>Показывать заказчику части проекта по мере готовности.</p>
+		<div class="next">
+			<h2>Задачи</h2>
+			<ul>
+				<li>командная работа над прототипом;</li>
+				<li>простая процедура развёртывания.</li>
+			</ul>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Сборка проекта</h2>
+		<p>Хоть нам и нужно в конечном итоге получить статические HTML-,
+			CSS- и JS-файлы, но «собирать» их можно из совершенно других форматов.</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Сборка JavaScript</h2>
+		<p>Отдельные компоненты «склеиваются» в один файл,
+			который потом обрабатывается минификатором.</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Сборка CSS</h2>
+		<p>Файлы стилей генерируются с помощью препроцессоров<br>LESS, Stylus и т.п.</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Сборка HTML</h2>
+		<p>Файлы с разметкой генерируются шаблонизатором из
+			отдельных страниц, повторно используемых фрагментов и раскладок.</p>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Наши первые шаги</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Assemble</h2>
+		<p>Генератор статических сайтов на Node.js</p>
+		<p><a href="http://assemble.io">http://assemble.io</a></p>
+		<p>Есть <a href="https://github.com/assemble/grunt-init-assemble">шаблон для Grunt</a> и
+			<a href="https://github.com/assemble/generator-assemble">генератор для Yeoman</a>.</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Assemble</h2>
+		<ul>
+			<li>запускается как Grunt-задача;</li>
+			<li class="next">использует шаблоны Handlebars (или любые другие);</li>
+			<li class="next">содержит набор готовых хелперов (легко написать свой);</li>
+			<li class="next">поддерживает раскладки любой вложенности;</li>
+			<li class="next">позволяет повторно использовать фрагменты страниц и
+				выносить данные из разметки.</li>
+		</ul>
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/page_hbs.png" alt="">
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/page_hbs_next.png" alt="">
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Мета-данные страницы</h2>
+		<p>YAML front matter</p>
+		<ul>
+			<li><code>layout</code></li>
+			<li><code>published</code></li>
+			<li><code>category</code>, <code>categories</code> и <code>tags</code></li>
+		</ul>
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/page_with_data_hbs.png" alt="">
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/page_with_data_hbs_next.png" alt="">
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Мета-данные страницы</h2>
+		Шаблон страницы может получить данные из:
+		<ul>
+			<li>YAML front matter</li>
+			<li>Gruntfile.js</li>
+			<li><strong>из внешних JSON- или YAML-файлов</strong></li>
+		</ul>
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/assemble_layout.png" alt="">
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/settings_hbs.png" alt="">
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/settings_hbs_next.png" alt="">
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/two_columns_hbs.png" alt="">
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/two_columns_hbs_next.png" alt="">
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Встроенные переменные</h2>
+		<ul>
+			<li><code>basename</code> или <code>pagename</code></li>
+			<li><code>filename</code></li>
+			<li><code>dirname</code></li>
+			<li><code>ext</code></li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Хелперы</h2>
+		<p>Блочные: <code>{{#each}}</code>, <code>{{#if}}</code> и т.п.</p>
+		<pre class="next">
+			<code><mark>{{#is basename &quot;index&quot;}}</mark></code>
+			<code>&nbsp;&nbsp;&lt;span&gt;Site name&lt;/span&gt;</code>
+			<code><mark>{{else}}</mark></code>
+			<code>&nbsp;&nbsp;&lt;a href=&quot;/&quot;&gt;Site name&lt;/a&gt;</code>
+			<code><mark>{{/is}}</mark></code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Хелперы</h2>
+		<p>Функции: <code>{{default}}</code>, <code>{{formatDate}}</code> и т.п.</p>
+		<pre class="next">
+			<code>&lt;title&gt;<mark>{{default title basename}}</mark>&lt;/title&gt;</code>
+			<code>&lt;script src=&quot;/all.js?v=<mark>{{now "%d%H%M%S"}}</mark>&quot;&gt;&lt;/script&gt;</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Хелперы</h2>
+		<pre>
+			<code>module.exports.register =</code>
+			<code>&nbsp;function (Handlebars, options) {</code>
+			<code>&nbsp;&nbsp;Handlebars.registerHelper(&quot;foo&quot;, function (str) {</code>
+			<code>&nbsp;&nbsp;&nbsp;return &quot;---=== &quot; + str + &quot; ===---&quot;;</code>
+			<code>&nbsp;&nbsp;});</code>
+			<code>&nbsp;};</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Паршалы</h2>
+		<p>Повторно используемые фрагменты страниц.</p>
+		<p class="next">Могут вызываться в разных контекстах.</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Запуск задач с помощью Grunt</h2>
+		<div class="small-gap">
+			<p>$ <code>grunt</code><br>
+				одноразовый запуск сборки всего проекта</p>
+		</div>
+		<div class="small-gap">
+			<p>$ <code>grunt watch</code><br>
+				запуск сборки и отслеживание изменения в файлах</p>
+		</div>
+		<div class="small-gap">
+			<p>$ <code>grunt server</code><br>
+				запуск HTTP-сервера и отслеживание изменений с livereload</p>
+		</div>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Пример Gruntfile.js</h2>
+		<p><a href="https://github.com/doneright/assemble">https://github.com/doneright/assemble</a></p>
+		<ul>
+			<li>сборка HTML из шаблонов;</li>
+			<li>компиляция LESS-файлов;</li>
+			<li>склеивание и минификация скриптов;</li>
+			<li>watcher, сервер и livereload.</li>
+		</ul>
+	</div></section>	
+
+	<section class="slide shout"><div>
+		<h2>Git</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Git</h2>
+		<ul>
+			<li>Сторонние сервисы (<a href="https://github.com">GitHub</a>, <a href="http://www.codebasehq.com">CodeBase</a> и др.)</li>
+			<li>Свой Git-сервер (Gitosis)</li>
+		</ul>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>Git работает<br>без сервера!</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Автоматическое развёртывание</h2>
+		<p>Если <strong>GitHub</strong> и VPS, то настраиваем «WebHook»<br>
+			<img src="images/github_webhook.png" alt=""></p>
+	</div></section>	
+
+	<section class="slide cover w"><div>
+		<img src="images/hook_server.png" alt="">
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/git_hooks.gif" alt="">
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Автоматическое развёртывание</h2>
+		<p>Если <strong>собственный сервер</strong>,<br>
+			то настраиваем <code>post-receive</code>
+			или <code>update</code> хук.</p>
+	</div></section>	
+
+	<section class="slide"><div>
+		<h2>Автоматическое развёртывание</h2>
+		<p>Если файлы на хостинг заливаются только по FTP,<br>
+			то выручит скрипт <a href="https://github.com/git-ftp/git-ftp">git-ftp</a>.</p>
+		<p class="next">Файлы добавляются, удаляются и обновляются
+			только, если они находятся под контролем версий.</p>
+	</div></section>	
+
+	<section class="slide shout"><div>
+		<h2>Демо</h2>
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/git_ftp.gif" alt="">
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/git_ftp_2.gif" alt="">
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/git_ftp_3.gif" alt="">
+	</div></section>
+
+	<section class="slide cover w"><div>
+		<img src="images/git_ftp_4.gif" alt="">
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Заключение</h2>
+		<ul>
+			<li>Узнали как собрать статический сайт из страниц,
+				повторно используемых фрагментов и раскладок.</li>
+			<li>Узнали как выложить собранный сайт на сервер.</li>
+		</ul>
+		<p>Презентация: <a href="http://bit.ly/fronttalks-ci">bit.ly/fronttalks-ci</a>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Спасибо за внимание</h2>
+		<p><strong>Владимир Кузнецов</strong><br>
+			Twitter: <a href="http://twitter.com/mista_k">@mista_k</a><br>
+			Блог: <a href="http://noteskeeper.ru">noteskeeper.ru</a></p>
+		<p>Презентация: <a href="http://bit.ly/fronttalks-ci">bit.ly/fronttalks-ci</a>
+	</div></section>
+
+	<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.js"></script>
+	<!-- Copyright © 2013 Vladimir Kuznetsov, Engine6 -->
+</body>
+</html>
